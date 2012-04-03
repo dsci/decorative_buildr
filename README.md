@@ -27,3 +27,7 @@ One<br/>Two<br/>
 ## Is this useful?
 
 Of course. For little things. ... Of course.
+
+### License
+---
+See LICENSE file.
