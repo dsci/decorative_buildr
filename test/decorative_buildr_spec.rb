@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 
-require File.expand_path(File.join(File.dirname(__FILE__),'..','decorative_buildr.rb'))
+require File.expand_path(File.join(File.dirname(__FILE__),'..', 'lib','decorative_buildr.rb'))
 
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 

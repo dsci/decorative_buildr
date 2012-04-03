@@ -1,9 +1,7 @@
 PATH
   remote: .
   specs:
-    decorative_buildr (0.1.4)
-      minitest (~> 2.11.4)
-      rake
+    decorative_buildr (0.1.5)
 
 GEM
   remote: http://rubygems.org/
@@ -16,3 +14,5 @@ PLATFORMS
 
 DEPENDENCIES
   decorative_buildr!
+  minitest (~> 2.11.4)
+  rake
