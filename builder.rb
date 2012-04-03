@@ -23,8 +23,8 @@ module DecorativeBuildr
   # @author Daniel Schmidt
   module Builder
     
-    def add(line)
-      @infos << rescue_nil_string(line) << @line_ending
+    def add(line, options={})
+      @infos << rescue_nil_string(line,options) << @line_ending
     end
     
     # Concats multiple string with a line ending. It receives a block. 
@@ -32,16 +32,27 @@ module DecorativeBuildr
     # @return [String] The concated String 
     def build_info(opt={},&block)
       raise "Arguments in invalid form" unless opt.is_a?(Hash)
-      @infos = rescue_nil_string(@infos)
-      @line_ending = opt.fetch(:line_ending, "\n")
+      @infos        = rescue_nil_string(@infos)
+      @line_ending  = opt.fetch(:line_ending, "\n")
+      @pre          = opt.fetch(:pre, "")
+      @after        = opt.fetch(:after, "")
       block.call(self)
+      @infos = "#{@pre}#{@line_ending}#{@infos}" unless @pre.empty?
+      @infos = "#{@infos}#{@line_endings}#{@after}" unless @after.empty?
       return @infos
     end
     
     private
     
-    def rescue_nil_string(string)
-      string.nil? ? "" : string
+    def rescue_nil_string(string, options=nil)
+      line = string.nil? ? "" : string
+      unless options.nil?
+        if options.has_key?(:tag)
+          tag = options[:tag]
+          line = string.nil? ? "<#{tag}></#{tag}" : "<#{tag}>#{string}</#{tag}>"
+        end
+      end
+      return line
     end
     
   end
