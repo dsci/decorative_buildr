@@ -1,1 +1,1 @@
-Dir[File.expand_path(File.join(File.dirname(__FILE__), '*.rb'))].each{|file| require file}
+Dir[File.expand_path(File.join(File.dirname(__FILE__),'lib', '*.rb'))].each{|file| require file}
